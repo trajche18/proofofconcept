@@ -1,0 +1,17 @@
+//standard theme for all the components below
+//@import "../../node_modules/vuetify/src/stylus/settings/_colors.styl"
+@import "vuetify/es5/util/colors"
+$theme := {
+    primary: colors.purple,
+    secondary: colors.purple
+    accent: $red.darken-1,
+    success: $green.accent-3,
+    error: $red.accent-3,
+    info: $red.accent-4,
+    warning: $yellow.lighten-1,
+    success: $red
+  }
+
+// main.styl -> Import vuetify styles & variables. 1st override variables, than import main variables
+@import '../../node_modules/vuetify/src/stylus/main'
+@import '~vuetify/src/stylus/main'
