@@ -7,6 +7,7 @@ import BlogCreate from '@/components/blog/BlogCreate'
 import UserProfile from '@/components/user/UserProfile'
 import UserSignUp from '@/components/user/UserSignUp'
 import UserLogIn from '@/components/user/UserLogIn'
+import AuthGuard from './authGuard'
 
 Vue.use(Router)
 
@@ -27,7 +28,8 @@ export default new Router({
     {
       path: '/blog/new',
       name: 'BlogCreate',
-      component: BlogCreate
+      component: BlogCreate,
+      beforeEnter: AuthGuard
     },
     {
       path: '/blogs/:id',
@@ -38,7 +40,8 @@ export default new Router({
     {
       path: '/profile',
       name: 'UserProfile',
-      component: UserProfile
+      component: UserProfile,
+      beforeEnter: AuthGuard
     },
     {
       path: '/signup',

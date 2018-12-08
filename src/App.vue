@@ -14,6 +14,14 @@
           </v-list-tile-action>
           <v-list-tile-content>{{item.content}}</v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile @click="onLogout" v-if="userAuthenticated">
+          <v-list-tile-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>Log Out</v-list-tile-content>
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -35,6 +43,11 @@
           :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
           {{item.content}}
+        </v-btn>
+
+        <v-btn flat v-if="userAuthenticated" @click="onLogout">
+          <v-icon left>exit_to_app</v-icon>
+          Log Out
         </v-btn>
       </v-toolbar-items>
 
@@ -69,7 +82,7 @@
             //  { icon: 'clear_all', content: 'View Blog', link: '/blog/:id' }, // niet nodig? Moet binnen '/blogs' zijn
             {icon: 'insert_comment', content: 'Blogs', link: '/blogs'},
             {icon: 'clear_all', content: 'Create Blog', link: '/blog/new'},
-            {icon: 'person', content: 'User', link: '/profile'}
+            {icon: 'account_circle', content: 'User', link: '/profile'}
           ]
         }
         return menuFunctions
@@ -77,6 +90,11 @@
       // user is Auth when user.uid already exists
       userAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods: {
+      onLogout () { // call logOut() from store/index.js
+        this.$store.dispatch('logOut')
       }
     }
   }

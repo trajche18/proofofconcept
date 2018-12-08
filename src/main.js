@@ -39,5 +39,12 @@ new Vue({
       projectId: 'accessibilitypoc',
       storageBucket: ''
     })
+    this.$store.dispatch('loadBlogs')
+    // firebase checks for a valid user-token (localStorage) at startup
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) { // if user has ever been logged in on this PC [which has the token saved in local storage] -> user will be automatically logged in
+        this.$store.dispatch('autoLogIn', user)
+      }
+    })
   }
 })

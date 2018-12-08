@@ -18,8 +18,21 @@
       </v-flex>
     </v-layout>
 
-    <!--Carousel(header) layout -->
-    <v-layout row wrap class="mt-2">
+    <!--The indeterminate loading-animation from vuetify with my stored colors-->
+    <v-layout>
+      <v-flex xs12 class="text-xs-center">
+        <v-progress-circular
+          :size="70"
+          :width="7"
+          indeterminate
+          color="secondary"
+          v-if="loading"
+        ></v-progress-circular>
+      </v-flex>
+    </v-layout>
+
+    <!--Carousel(header) layout. Only show this component IF loadingAnimation IS NOT loading. So only when firebase has loaded the blog-data-->
+    <v-layout row wrap class="mt-2" v-if="!loading">
       <v-flex xs12>
         <v-carousel style="cursor: pointer">
           <v-carousel-item
@@ -54,6 +67,10 @@
       blogs () {
         // get data from featured (sliced 0 to 3) blogs
         return this.$store.getters.featuredBlogs
+      },
+      loading () {
+        // get the stored loading getter from store/index.js
+        return this.$store.getters.loading
       }
     },
     methods: {
