@@ -1,51 +1,83 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="sideNav" fixed>
+    <v-navigation-drawer temporary="" v-model="sideNav" fixed>
       <v-list dense>
+
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
-        <v-list-tile @click="" v-for="item in menuFunctions" :keys="item.description">
+        <v-list-tile
+          @click=""
+          v-for="item in menuFunctions"
+          :key="item.content"
+          :to="item.link">
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-content>{{item.description}}</v-list-tile-content>
+          <v-list-tile-content>{{item.content}}</v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
+
     <!--This will be the 'dynamic' navBar incl. all the items -->
     <!--The burgerMenu will be shown only on small(smartphone) devices AND The items on the standard navBar will ne hidden on these small devices.-->
-    <v-toolbar class="primary"> <!--Colors could be managed in App.vue -->
-      <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav"
-      class="hidden-sm-and-up"></v-toolbar-side-icon>
-      <v-toolbar-title>Welcome To My Blogs</v-toolbar-title>
+    <v-toolbar class="primary"> <!--Colors could be managed in main.js -->
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav"
+                           class="hidden-sm-and-up"></v-toolbar-side-icon>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer">Welcome To My Blogs</router-link>
+      </v-toolbar-title>
+
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat v-for="item in menuFunctions" :keys="item.description">
+        <v-btn
+          flat
+          v-for="item in menuFunctions"
+          :key="item.content"
+          :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
-          {{item.description}}
+          {{item.content}}
         </v-btn>
       </v-toolbar-items>
+
     </v-toolbar>
     <main>
-      <router-vue></router-vue>
+      <router-view></router-view>
       <!-- -->
     </main>
   </v-app>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      sideNav: false,
-      menuFunctions: [
-        { icon: 'insert_comment', description: 'My Blogs' },
-        { icon: 'clear_all', description: 'Read Blog' },
-        { icon: 'person', description: 'User' },
-        { icon: 'face', description: 'Sign Up' },
-        { icon: 'lock_open', description: 'Log In' }
-      ]
+  export default {
+    data () {
+      return {
+        sideNav: false
+        // the menu-components are made dynamic, linked to the corresponding route (page)
+      }
+    },
+    name: 'App',
+    computed: {
+      menuFunctions () {
+        // if user not authenticated: visualize 'Read Blogs' and 'Login/Signup'
+        let menuFunctions = [
+          {icon: 'insert_comment', content: 'Blogs', link: '/blogs'},
+          {icon: 'face', content: 'Sign Up', link: '/signup'},
+          {icon: 'lock_open', content: 'Log In', link: '/login'}
+        ]
+        if (this.userAuthenticated) {
+          // if user is authenticated, then open functions: 'Blogs', 'Create new Blog' and 'See My Profile'
+          menuFunctions = [
+            //  { icon: 'clear_all', content: 'View Blog', link: '/blog/:id' }, // niet nodig? Moet binnen '/blogs' zijn
+            {icon: 'insert_comment', content: 'Blogs', link: '/blogs'},
+            {icon: 'clear_all', content: 'Create Blog', link: '/blog/new'},
+            {icon: 'person', content: 'User', link: '/profile'}
+          ]
+        }
+        return menuFunctions
+      },
+      // user is Auth when user.uid already exists
+      userAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
     }
-  },
-  name: 'App'
-}
+  }
 </script>
