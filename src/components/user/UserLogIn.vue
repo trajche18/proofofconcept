@@ -24,7 +24,7 @@
                                   id="email"
                                   v-model="email"
                                   type="email"
-                                  autofocus="true"
+                                  autofocus=true
                                   required>
                     </v-text-field>
                   </v-flex>
@@ -37,13 +37,15 @@
                                   id="password"
                                   v-model="password"
                                   type="password"
-                                  required>
+                                  required
+                                  aria-required="true">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-layout row>
-                  <v-flex xs12> <!--Loading animation implemented in the button. Bind to :loading and :disabled, which are stored in store/index.js (as  mutations that are later get from the getters)-->
+                  <v-flex xs12>
+                    <!--Loading animation implemented in the button. Bind to :loading and :disabled, which are stored in store/index.js (as  mutations that are later get from the getters)-->
                     <v-btn type="submit" class="secondary" :disabled="loading" :loading="loading">Log In
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>

@@ -16,7 +16,7 @@
                 id="title"
                 placeholder="Here comes the blog's title"
                 counter="50"
-                autofocus="true"
+                autofocus=true
                 v-model="title"
                 required>
               </v-text-field>
@@ -30,7 +30,7 @@
                 id="content"
                 placeholder="Start writing your blog"
                 height="250"
-                box="true"
+                box=true
                 v-model="content"
                 required>
               </v-textarea>
@@ -44,7 +44,7 @@
                 id="intro"
                 placeholder="Write an intro for your blog"
                 height="150"
-                box="true"
+                box=true
                 counter="100"
                 v-model="intro"
                 required>

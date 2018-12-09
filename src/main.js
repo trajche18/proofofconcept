@@ -8,6 +8,7 @@ import colors from 'vuetify/es5/util/colors'
 import {store} from './store/index'
 import DateFilter from './filters/date'
 import Alerts from './components/alerts/Alert'
+import EditBlog from './components/blog/editFunction/editBlog'
 
 Vue.use(Vuetify, {
   theme: {
@@ -23,6 +24,7 @@ Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', Alerts)
+Vue.component('app-edit-blog-dialog', EditBlog)
 
 /* eslint-disable no-new */
 new Vue({
@@ -33,18 +35,18 @@ new Vue({
   created () {
     // the tokens vary from account
     firebase.initializeApp({
-      apiKey: 'AIzaSyDkGKQJOTn9epJn_yA9W0B1NIj_Wi3ho1w',
-      authDomain: 'accessibilitypoc.firebaseapp.com',
-      databaseURL: 'https://accessibilitypoc.firebaseio.com',
-      projectId: 'accessibilitypoc',
+      apiKey: 'AIzaSyDBeKw1ZAFNFWCyFJ3uIKt13D45oS3OYmI',
+      authDomain: 'accessibilitypoc-2bbce.firebaseapp.com',
+      databaseURL: 'https://accessibilitypoc-2bbce.firebaseio.com',
+      projectId: 'accessibilitypoc-2bbce',
       storageBucket: ''
     })
-    this.$store.dispatch('loadBlogs')
     // firebase checks for a valid user-token (localStorage) at startup
     firebase.auth().onAuthStateChanged((user) => {
       if (user) { // if user has ever been logged in on this PC [which has the token saved in local storage] -> user will be automatically logged in
         this.$store.dispatch('autoLogIn', user)
       }
     })
+    this.$store.dispatch('loadBlogs')
   }
 })

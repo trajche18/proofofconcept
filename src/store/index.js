@@ -34,8 +34,26 @@ export const store = new Vuex.Store({
   mutations: {
     // Using mutations to change state in Vuex.Store for each newly created blog
     // I used payload to pass multiple (additional) arguments to commit (seen under 'actions' below). Payload is an object which contains multiple fields (the blog attributes)
+    setLoadedBlogs (state, payload) {
+      state.loadedBlogs = payload
+    },
     createBlog (state, payload) {
       state.loadedBlogs.push(payload)
+    },
+    // fetch meta and UPDATE only the objects that are mutated
+    updateBlog (state, payload) {
+      const blog = state.loadedBlogs.find(blog => {
+        return blog.id === payload.id
+      })
+      if (payload.title) {
+        blog.title = payload.title
+      }
+      if (payload.content) {
+        blog.content = payload.content
+      }
+      if (payload.intro) {
+        blog.intro = payload.intro
+      }
     },
     // get the user from firebase DB and overwrite the data to SET this user
     setUser (state, payload) {
@@ -49,14 +67,39 @@ export const store = new Vuex.Store({
     },
     clearError (state) {
       state.error = null
-    },
-    setLoadedBlogs (state, payload) {
-      state.loadedBlogs = payload
     }
   },
   // we use actions to commit the mutations above. In our case we use payload, since we need to pass multiple arguments (blog attributes)
   // extracting the properties & mapping these arguments (of payload) in another object for a more robust way of developing and reusability of code. That way we can chose which properties we actually want to pass
   actions: {
+    loadBlogs ({commit}) {
+      commit('setLoading', true) // set loading while firebase is busy fetching blogs-data
+      // fetch data-values from the 'blogs' node from firebase after each change
+      firebase.database().ref('blogs').once('value') // on for realtime updates
+        .then((data) => {
+          const blogs = []
+          const obj = data.val()
+          for (let key in obj) {
+            blogs.push({
+              id: key,
+              title: obj[key].title,
+              content: obj[key].content,
+              intro: obj[key].intro,
+              imageURL: obj[key].imageURL,
+              date: obj[key].date,
+              userId: obj[key].userId
+            })
+          }
+          commit('setLoadedBlogs', blogs) // get the blogs
+          commit('setLoading', false) // stop the loading animation
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+            commit('setLoading', false) // contonue loading if there is an error
+          }
+        )
+    },
     createBlog ({commit, getters}, payload) {
       const blog = {
         title: payload.title,
@@ -83,32 +126,29 @@ export const store = new Vuex.Store({
         })
       // here comes firebase with ID
     },
-    loadBlogs ({commit}) {
-      commit('setLoading', true) // set loading while firebase is busy fetching blogs-data
-      // fetch data-values from the 'blogs' node from firebase after each change
-      firebase.database().ref('blogs').once('value') // on for realtime updates
-        .then((data) => {
-          const allBlogs = []
-          const obj = data.val()
-          for (let key in obj) {
-            allBlogs.push({
-              id: key,
-              title: obj[key].title,
-              content: obj[key].content,
-              intro: obj[key].intro,
-              imageURL: obj[key].imageURL,
-              userId: obj[key].userId
-            })
-          }
-          commit('setLoadedBlogs', allBlogs) // get the blogs
-          commit('setLoading', false) // stop the loading animation
+    updateBlogData ({commit}, payload) {
+      // check edited changes, if any. If payload hold a new title-data, it gets passed to firebase
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.content) {
+        updateObj.content = payload.content
+      }
+      if (payload.intro) {
+        updateObj.intro = payload.intro
+      }
+      // ONLY overwrite the edited (new) objects
+      firebase.database().ref('blogs/').child(payload.id).update(updateObj)
+        .then(() => {
+          commit('setLoading', false)
+          commit('updateBlog', payload)
         })
-        .catch(
-          (error) => {
-            console.log(error)
-            commit('setLoading', true) // contonue loading if there is an error
-          }
-        )
+        .catch(error => {
+          console.log(error)
+          commit('setLoading, false')
+        })
     },
     // Underwater connect to firebase-server. Send the data (email&pw) to firebase and then validate this data. Thus, check if the user is new -> create a user. If user exists -> show error that user exists
     signUpUser ({commit}, payload) {
@@ -126,12 +166,13 @@ export const store = new Vuex.Store({
           }
           commit('setUser', newUser)
         })
-        .catch(error => {
-          // stop the loading when you get an error & set the error
-          commit('setLoading', false)
-          commit('setError', error)
-          console.log(error)
-        })
+        .catch(
+          error => {
+            // stop the loading when you get an error & set the error
+            commit('setLoading', false)
+            commit('setError', error)
+            console.log(error)
+          })
     },
     logInUser ({commit}, payload) {
       // trigger loading when user signing up
@@ -162,8 +203,9 @@ export const store = new Vuex.Store({
       commit('setUser', {id: payload.uid, publishedBlogs: []})
     },
     // remove localStorage token from the browser when user clicks "Log Out"
-    logOut ({commit}) {
+    signOut ({commit}) {
       firebase.auth().signOut()
+      // firebase.database().goOffline()
       commit('setUser', null)
     },
     clearError ({commit}) {

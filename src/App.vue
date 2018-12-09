@@ -15,7 +15,7 @@
           <v-list-tile-content>{{item.content}}</v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click="onLogout" v-if="userAuthenticated">
+        <v-list-tile v-if="userAuthenticated" @click="onSignOut" >
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
           </v-list-tile-action>
@@ -45,7 +45,7 @@
           {{item.content}}
         </v-btn>
 
-        <v-btn flat v-if="userAuthenticated" @click="onLogout">
+        <v-btn flat v-if="userAuthenticated" @click="onSignOut">
           <v-icon left>exit_to_app</v-icon>
           Log Out
         </v-btn>
@@ -93,8 +93,8 @@
       }
     },
     methods: {
-      onLogout () { // call logOut() from store/index.js
-        this.$store.dispatch('logOut')
+      onSignOut () { // call signOut() from store/index.js
+        this.$store.dispatch('signOut')
       }
     }
   }
