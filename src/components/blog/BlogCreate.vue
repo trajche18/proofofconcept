@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <h2 class="secondary--text">Create a Blog</h2>
+        <h2 class="secondary--text" aria-label="Fill in all the fields to publish your new blog">Create a Blog</h2>
       </v-flex>
     </v-layout>
 
@@ -14,11 +14,15 @@
               <v-text-field
                 name="title"
                 id="title"
-                placeholder="Here comes the blog's title"
                 counter="50"
-                autofocus=true
+                autofocus
                 v-model="title"
-                required>
+                required
+                :rules="textfieldRules"
+                label="Blog's title"
+                hint="Please enter the title of your blog"
+                aria-label=" enter the title of your blog."
+                aria-required="true">
               </v-text-field>
             </v-flex>
           </v-layout>
@@ -28,11 +32,15 @@
               <v-textarea
                 name="content"
                 id="content"
-                placeholder="Start writing your blog"
                 height="250"
-                box=true
+                box
                 v-model="content"
-                required>
+                required
+                :rules="textfieldRules"
+                label="Blog's content"
+                hint="Begin writing your blog"
+                aria-label=" start writing your blog"
+                aria-required="true">
               </v-textarea>
             </v-flex>
           </v-layout>
@@ -42,12 +50,16 @@
               <v-textarea
                 name="intro"
                 id="intro"
-                placeholder="Write an intro for your blog"
                 height="150"
-                box=true
+                box
                 counter="100"
                 v-model="intro"
-                required>
+                required
+                :rules="textfieldRules"
+                label="Blog's intro"
+                hint="Write an introduction for your blog"
+                aria-label=" write the introduction for your blog"
+                aria-required="true">
               </v-textarea>
             </v-flex>
           </v-layout>
@@ -57,26 +69,49 @@
               <v-text-field
                 name="imageURL"
                 id="imgURL"
-                placeholder="Enter image URL"
                 v-model="imageURL"
-                required>
+                hint="Copy a valid img-URL from the internet"
+                required
+                :rules="textfieldRules"
+                label="Place your IMG-URL here"
+                aria-label="Copy the image URL in this text-field"
+                aria-required="true">
               </v-text-field>
             </v-flex>
           </v-layout>
 
           <v-layout row>
-            <v-flex xs12 sm6 offset-sm3 class="mt-1">
+            <v-flex xs12 sm6 offset-sm3 class="mt-1"
+                    aria-label="Here is a preview of your chosen picture">
               <img :src="imageURL" height="180">
+            </v-flex>
+          </v-layout>
+
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3 class="mt-1">
+              <v-text-field
+                name="imageDescription"
+                id="imageDescription"
+                v-model="imageDescription"
+                required
+                :rules="textfieldRules"
+                label="Image's description"
+                hint="Please describe the picture for the visually impaired"
+                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what is going on in the picture"
+                aria-required="true">
+              </v-text-field>
             </v-flex>
           </v-layout>
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <!--btn disabled if !formCompleted | if all form-fields are filled, button becomes enabled/ clickable -->
-              <v-btn class="secondary"
-                     :disabled="!formCompleted"
-                     type="submit"
-              >Publish
+              <v-btn
+                class="secondary"
+                :disabled="!formCompleted"
+                type="submit"
+                aria-label="Press enter to save changes and publish your blog. Afterwards, You will be redirected to your new blog.">
+                Publish
               </v-btn>
             </v-flex>
           </v-layout>
@@ -97,8 +132,12 @@
         content: '',
         intro: '',
         imageURL: '',
+        imageDescription: '',
         id: '',
-        date: new Date()
+        date: new Date(),
+        textfieldRules: [
+          v => !!v || 'Please fill out this field'
+        ]
       }
     },
     computed: {
@@ -119,6 +158,7 @@
           content: this.content,
           intro: this.intro,
           imageURL: this.imageURL,
+          imageDescription: this.imageDescription,
           id: this.id,
           date: new Date()
         }

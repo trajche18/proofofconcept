@@ -1,6 +1,13 @@
 <template>
   <v-dialog width="450px" persistent v-model="editDialog">
-    <v-btn fab accent slot="activator" class="secondary mb-1">
+    <!--This is the editBtn users see in /blog/:id -> the global component: 'app-edit-blog-dialog'-->
+    <v-btn
+      accent
+      slot="activator"
+      class="secondary mb-1"
+      aria-haspopup="dialog"
+      aria-expanded="true"
+      aria-label="Press enter to edit this blog.">
       <v-icon>edit</v-icon>
     </v-btn>
 
@@ -9,7 +16,8 @@
         <v-layout row wrap>
           <v-flex xs12>
             <v-card-title>
-              <h4 class="secondary--text"> Edit Blog </h4>
+              <!--pay attention to the title, make it focusable-->
+              <h3 class="secondary--text" aria-label="Edit Blog Dialog Opened." role="heading"> Edit Blog </h3>
             </v-card-title>
           </v-flex>
         </v-layout>
@@ -21,62 +29,81 @@
               <v-text-field
                 name="title"
                 id="title"
-                placeholder="Here comes the blog's title"
                 counter="50"
-                autofocus=true
+                autofocus
                 v-model="editedTitle"
                 required
+                :rules="textfieldRules"
+                aria-label="Edit the title of your blog. Current title is:"
                 aria-required="true">
               </v-text-field>
 
               <v-textarea
                 name="intro"
                 id="intro"
-                placeholder="Write an intro for your blog"
                 height="100"
-                box=true
+                box
                 counter="100"
                 v-model="editedIntro"
-                required>
+                required
+                :rules="textfieldRules"
+                aria-label="Edit the intro of your blog. Current intro is:"
+                aria-required="true">
               </v-textarea>
 
               <v-textarea
                 name="content"
                 id="content"
-                placeholder="Start writing your blog"
                 height="250"
-                box=true
+                box
                 v-model="editedContent"
-                required>
+                required
+                :rules="textfieldRules"
+                aria-label="Edit the content of your blog. Current blog content is:"
+                aria-required="true">
               </v-textarea>
-
             </v-card-text>
           </v-flex>
         </v-layout>
 
         <v-divider></v-divider>
-        <v-btn flat class="secondary" @click="saveEditedBlog">
-          Save
-        </v-btn>
-        <v-btn flat outline @click="editDialog = false">
-          Close
-        </v-btn>
+        <v-card-actions>
+          <a href="#" tabindex="0"
+             aria-label="Press tab to close the dialog and discard changes. Press tab again to save changes"></a>
+          <v-spacer></v-spacer>
+          <v-btn flat outline @click="editDialog = false"
+                 aria-label="Close this dialog. Changes won't be saved.">
+            Close
+          </v-btn>
+
+          <v-btn
+            flat :disabled="loading"
+            :loading="loading"
+            class="secondary"
+            @click="saveEditedBlog"
+            aria-label="Press to save changes. You will be automatically redirected back to your blog.">
+            Save
+          </v-btn>
+        </v-card-actions>
+
       </v-container>
     </v-card>
-
   </v-dialog>
 </template>
 
 <script>
   export default {
-    name: 'editBlog',
+    name: 'EditBlog',
     props: ['blog'],
     data () {
       return {
         editDialog: false,
         editedTitle: this.blog.title,
         editedContent: this.blog.content,
-        editedIntro: this.blog.intro
+        editedIntro: this.blog.intro,
+        textfieldRules: [
+          v => !!v || 'Please fill out this field'
+        ]
       }
     },
     methods: {
@@ -88,11 +115,16 @@
         }
         this.editDialog = false
         this.$store.dispatch('updateBlogData', {
-          id: this.blog.id,
+          id: this.blog.id, // unique blog.id stays the same in firebase
           title: this.editedTitle,
           content: this.editedContent,
           intro: this.editedIntro
         })
+      }
+    },
+    computed: {
+      loading () {
+        return this.$store.getters.loading
       }
     }
   }

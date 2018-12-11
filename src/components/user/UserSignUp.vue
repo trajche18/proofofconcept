@@ -13,50 +13,92 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <v-card-text>
+
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-card-title>
+                  <!--pay attention to the title, make it focusable-->
+                  <h2 class="secondary--text" aria-label="Please sign-up." role="heading"> Sign Up </h2>
+                </v-card-title>
+              </v-flex>
+            </v-layout>
+
             <v-container>
-              <!--Prevent the default submit action-->
+              <!--Prevent the default submit action for the signedUp method-->
               <form @submit.prevent="signedUp">
 
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field name="email"
-                                  label="Your E-mail"
-                                  id="email"
-                                  v-model="email"
-                                  type="email"
-                                  autofocus="true"
-                                  required>
+                    <v-text-field
+                      name="email"
+                      label="Your e-mail"
+                      id="email"
+                      v-model="email"
+                      type="email"
+                      :rules="emailRules"
+                      autofocus
+                      required
+                      hint="Please enter your email"
+                      aria-required="true"
+                      aria-label=" enter your email address">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field name="password"
-                                  label="Your Password"
-                                  id="password"
-                                  v-model="password"
-                                  type="password"
-                                  required>
+                    <v-text-field
+                      name="password"
+                      label="Your Password"
+                      id="password"
+                      v-model="password"
+                      type="password"
+                      :rules="passwordRules"
+                      required
+                      hint="Password must be at least 6 characters"
+                      aria-required="true"
+                      aria-label=" enter your password. Password must be at least 6 characters">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field name="confirmPassword"
-                                  label="Confirm Password"
-                                  id="confirmPassword"
-                                  v-model="confirmPassword"
-                                  type="confirmPassword"
-                                  :rules="[comparePasswords]">
+                    <v-text-field
+                      name="confirmPassword"
+                      label="Confirm Password"
+                      id="confirmPassword"
+                      v-model="confirmPassword"
+                      type="password"
+                      :rules="[comparePasswords || 'Passwords must match']"
+                      hint="Passwords must match"
+                      aria-required="true"
+                      aria-label=" enter your password for confirmation. The password should be matching the first one.">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
 
+                <v-checkbox
+                  v-model="checkbox"
+                  :rules="[v => !!v || 'You must agree with the terms to continue!']"
+                  label="I accept the Terms of Service"
+                  aria-required="true"
+                  aria-label="You must agree with the terms to continue. Press space to agree and check the checkbox"
+                  aria-checked="false"
+                  required>
+                </v-checkbox>
+
                 <v-layout row>
-                  <v-flex xs12> <!--Loading animation implemented in the button. Bind to :loading and :disabled, which are stored in store/index.js (as  mutations that are later get from the getters)-->
-                    <v-btn type="submit" class="secondary" :disabled="loading" :loading="loading">Sign Up
+                  <v-flex xs12>
+                    <!--Loading animation implemented in the button. Bind to :loading and :disabled, which are stored in store/index.js (as  mutations that are later get from the getters)-->
+                    <v-btn
+                      type="submit"
+                      class="secondary"
+                      :disabled="loading"
+                      :loading="loading"
+                      aria-pressed="false"
+                      aria-label="Press enter to sign up. You will be automatically logged in into your account.">
+                      Sign Up
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>
                       </span>
@@ -79,8 +121,17 @@
     data () {
       return {
         email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
         password: '',
-        confirmPassword: ''
+        passwordRules: [
+          v => !!v || 'Password is required',
+          v => (v && v.length >= 6) || 'Password must be at least 6 characters'
+        ],
+        confirmPassword: '',
+        checkbox: false
       }
     },
     computed: {

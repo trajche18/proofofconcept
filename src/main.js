@@ -8,7 +8,7 @@ import colors from 'vuetify/es5/util/colors'
 import {store} from './store/index'
 import DateFilter from './filters/date'
 import Alerts from './components/alerts/Alert'
-import EditBlog from './components/blog/editFunction/editBlog'
+import EditBlog from './components/blog/EditBlog'
 
 Vue.use(Vuetify, {
   theme: {
@@ -33,7 +33,7 @@ new Vue({
   router,
   render: h => h(App),
   created () {
-    // the tokens vary from account
+    // firebase tokens
     firebase.initializeApp({
       apiKey: 'AIzaSyDBeKw1ZAFNFWCyFJ3uIKt13D45oS3OYmI',
       authDomain: 'accessibilitypoc-2bbce.firebaseapp.com',
@@ -45,6 +45,7 @@ new Vue({
     firebase.auth().onAuthStateChanged((user) => {
       if (user) { // if user has ever been logged in on this PC [which has the token saved in local storage] -> user will be automatically logged in
         this.$store.dispatch('autoLogIn', user)
+        this.$store.dispatch('fetchUserData')
       }
     })
     this.$store.dispatch('loadBlogs')

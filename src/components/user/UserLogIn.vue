@@ -13,32 +13,51 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <v-card-text>
+
+            <v-layout row wrap>
+              <v-flex xs12>
+                <v-card-title>
+                  <!--pay attention to the title, make it focusable-->
+                  <h2 class="secondary--text" aria-label="Please log-in." role="heading"> Log In </h2>
+                </v-card-title>
+              </v-flex>
+            </v-layout>
+
             <v-container>
               <!--Prevent the default submit action-->
               <form @submit.prevent="loggedIn">
 
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field name="email"
-                                  label="Your E-mail"
-                                  id="email"
-                                  v-model="email"
-                                  type="email"
-                                  autofocus=true
-                                  required>
+                    <v-text-field
+                      name="email"
+                      label="Your e-mail"
+                      id="email"
+                      v-model="email"
+                      type="email"
+                      :rules="emailRules"
+                      autofocus
+                      required
+                      hint="Please enter your email"
+                      aria-label=" enter your email-address "
+                      aria-required="true">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
 
                 <v-layout row>
                   <v-flex xs12>
-                    <v-text-field name="password"
-                                  label="Your Password"
-                                  id="password"
-                                  v-model="password"
-                                  type="password"
-                                  required
-                                  aria-required="true">
+                    <v-text-field
+                      name="password"
+                      label="Your Password"
+                      id="password"
+                      v-model="password"
+                      type="password"
+                      :rules="passwordRules"
+                      required
+                      hint="Password must be at least 6 characters"
+                      aria-required="true"
+                      aria-label=" enter your password. Password must be at least 6 characters">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
@@ -46,7 +65,13 @@
                 <v-layout row>
                   <v-flex xs12>
                     <!--Loading animation implemented in the button. Bind to :loading and :disabled, which are stored in store/index.js (as  mutations that are later get from the getters)-->
-                    <v-btn type="submit" class="secondary" :disabled="loading" :loading="loading">Log In
+                    <v-btn
+                      type="submit"
+                      class="secondary"
+                      :disabled="loading"
+                      :loading="loading"
+                      aria-label="Press enter to log in. You will be redirected to the home page.">
+                      Log In
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>
                       </span>
@@ -69,7 +94,15 @@
     data () {
       return {
         email: '',
-        password: ''
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid'
+        ],
+        password: '',
+        passwordRules: [
+          v => !!v || 'Password is required',
+          v => (v && v.length >= 6) || 'Password must be at least 6 characters'
+        ]
       }
     },
     computed: {

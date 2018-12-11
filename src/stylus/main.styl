@@ -16,7 +16,14 @@ $theme := {
 @import '../../node_modules/vuetify/src/stylus/main'
 @import '~vuetify/src/stylus/main'
 
-
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .custom-loader {
   animation: loader 1s infinite;
   display: flex;

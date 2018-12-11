@@ -1,21 +1,32 @@
 <template>
   <v-app>
-    <v-navigation-drawer temporary="" v-model="sideNav" fixed>
+    <v-navigation-drawer
+      temporary=""
+      v-model="sideNav"
+      fixed
+      mobile-break-point
+      role="menu">
       <v-list dense>
-
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
         <v-list-tile
           @click=""
           v-for="item in menuFunctions"
           :key="item.content"
-          :to="item.link">
+          :to="item.link"
+          role="menuitem"
+          aria-haspopup="menu"
+          aria-expanded="true"
+          aria-hidden="true">
+          <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
+
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
+
           <v-list-tile-content>{{item.content}}</v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="userAuthenticated" @click="onSignOut" >
+        <v-list-tile v-if="userAuthenticated" @click="onSignOut" aria-hidden="true" role="menuitem">
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
           </v-list-tile-action>
@@ -27,16 +38,19 @@
 
     <!--This will be the 'dynamic' navBar incl. all the items -->
     <!--The burgerMenu will be shown only on small(smartphone) devices AND The items on the standard navBar will ne hidden on these small devices.-->
-    <v-toolbar class="primary"> <!--Colors could be managed in main.js -->
-      <v-toolbar-side-icon @click.stop="sideNav = !sideNav"
-                           class="hidden-sm-and-up"></v-toolbar-side-icon>
+    <v-toolbar class="primary" role="menubar"> <!--Colors could be managed in main.js -->
+      <v-toolbar-side-icon
+        @click.stop="sideNav = !sideNav"
+        class="hidden-sm-and-up">
+      </v-toolbar-side-icon>
+
       <v-toolbar-title>
         <router-link to="/" tag="span" style="cursor: pointer">Welcome To My Blogs</router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn
+        <v-btn role="menuitem"
           flat
           v-for="item in menuFunctions"
           :key="item.content"
@@ -45,13 +59,13 @@
           {{item.content}}
         </v-btn>
 
-        <v-btn flat v-if="userAuthenticated" @click="onSignOut">
+        <v-btn flat v-if="userAuthenticated" @click="onSignOut" role="menuitem">
           <v-icon left>exit_to_app</v-icon>
           Log Out
         </v-btn>
       </v-toolbar-items>
-
     </v-toolbar>
+
     <main>
       <router-view></router-view>
       <!-- -->
@@ -95,6 +109,7 @@
     methods: {
       onSignOut () { // call signOut() from store/index.js
         this.$store.dispatch('signOut')
+        this.$router.push('/') // redirect to the homepage after 'Log Out' is licked
       }
     }
   }
