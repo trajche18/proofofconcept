@@ -17,9 +17,10 @@
     <v-layout row wrap v-else>
       <v-flex xs12>
         <v-card>
-          <v-card-title primary-title="">
+          <v-card-title primary-title="" role="doc-subtitle">
             <h3 id="blogTitle" class="hidden" aria-label="The title of the blog:"></h3>
-            <h2 class="secondary--text" tabindex="0" aria-describedby="blogTitle" role="doc-subtitle">{{blog.title}}</h2>
+            <h2 class="secondary--text" tabindex="0" aria-describedby="blogTitle" role="doc-subtitle">
+              {{blog.title}}</h2>
             <v-spacer></v-spacer>
             <!-- pipeline date is for the better, locale supported, date-format -->
             <h5 class="dateColor--text pt-2" tabindex="0"> date published: {{blog.date | date}}. </h5>
@@ -30,7 +31,7 @@
             <!--Bind the imageURL to the card-->
             <!--We can use 2 alternatives: aria-describedby="<here comes the bonded paragraphID>" OR use alt="<long text here>" -->
             <v-img
-              href="#" tabindex="0"
+              tabindex="0"
               :src="blog.imageURL"
               :alt="blog.imageDescription"
               height="350px">
@@ -42,6 +43,7 @@
           <!--optional. For visualizing the introduction that the user sees in the blog page (/blogs)-->
           <v-card-text class="primary--text">
             <h3 id="blogIntro" class="hidden" aria-label="Introduction of the blog:"></h3>
+            <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty-->
             <div tabindex="0" aria-describedby="blogIntro"> {{blog.intro}}</div>
           </v-card-text>
 

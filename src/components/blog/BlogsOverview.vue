@@ -30,7 +30,7 @@
                 <v-responsive>
                   <!--Show the right image. Bind (with ':') the corresponding image, through the stored blog.imageURL-->
                   <v-img
-                    href="#" tabindex="0"
+                    tabindex="0"
                     :src="blog.imageURL"
                     height="130px"
                     :alt="blog.imageDescription">
@@ -41,6 +41,7 @@
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
                   <div>
+                    <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty-->
                     <h1 class="hidden" id="blogTitle" aria-label="Blog title:"></h1>
                     <h2 class="white--text mb-0" tabindex="0" aria-describedby="blogTitle">{{blog.title}} </h2>
 
@@ -60,7 +61,7 @@
                     Read More
                   </v-btn>
 
-                  <v-btn flat to="" aria-label="Share this blog with your friends!">
+                  <v-btn flat aria-label="Share this blog with your friends!">
                     <v-icon>arrow_forward</v-icon>
                     Share Blog
                   </v-btn>

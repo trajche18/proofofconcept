@@ -8,16 +8,19 @@
       role="menu">
       <v-list dense>
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
+        <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
         <v-list-tile
           @click=""
           v-for="item in menuFunctions"
           :key="item.content"
           :to="item.link"
-          role="menuitem"
           aria-haspopup="menu"
           aria-expanded="true"
-          aria-hidden="true">
-          <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
+          aria-hidden="true"
+          role="menuitem"
+          tabindex="-1">
+          <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
+          that is why i combined it with tabindex="-1", to make it untabbable-->
 
           <v-list-tile-action>
             <v-icon>{{item.icon}}</v-icon>
@@ -51,15 +54,16 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn role="menuitem"
-          flat
-          v-for="item in menuFunctions"
-          :key="item.content"
-          :to="item.link">
+               aria-label="menu item"
+               flat
+               v-for="item in menuFunctions"
+               :key="item.content"
+               :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>
           {{item.content}}
         </v-btn>
 
-        <v-btn flat v-if="userAuthenticated" @click="onSignOut" role="menuitem">
+        <v-btn flat v-if="userAuthenticated" @click="onSignOut" role="menuitem" aria-label="Log Out">
           <v-icon left>exit_to_app</v-icon>
           Log Out
         </v-btn>

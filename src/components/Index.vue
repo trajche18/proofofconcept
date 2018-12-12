@@ -68,6 +68,7 @@
       <v-layout wrap>
         <v-flex xs12>
           <v-combobox
+            role="tab"
             aria-haspopup="listbox"
             aria-label="Please select one of the following by using the arrow keys"
             aria-autocomplete="list"
@@ -90,42 +91,56 @@
               class="mx-auto"
               color="grey lighten-4"
               max-width="600">
+
               <v-img
+                aria-describedby="imgDescription"
+                tabindex="0"
                 :aspect-ratio="16/9"
-                src="https://cdn.vuetifyjs.com/images/cards/kitchen.png">
+                src="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/09/29/104740719-GettyImages-855370048-elon-musk.530x298.jpg?v=1544455606">
+                <!--the css-class="hidden" is in this situation crucial, because the heading h2 actually has value and needs to be hidden from the human eye-->
+                <h2 id="imgDescription"
+                    class="hidden">
+                  A hover-component is shown. A picture of the futurist Elon Mask is visualized within the
+                  hover-component. The hover reveals one of his quotes: I could either
+                  watch it happen or be a part of it. Tab to read more!</h2>
 
                 <v-expand-transition>
                   <div
+                    aria-expanded="true"
                     v-if="hover"
-                    class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+                    class="d-flex transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
                     style="height: 100%;"
-                    aria-label="Press tab to view this button">
-                    Click to view this blog
+                    aria-label="Tab to read full blog">
+                    "I could either watch it happen or be a part of it." <br><br><br> -Elon Musk
                   </div>
                 </v-expand-transition>
-
               </v-img>
+
               <v-card-text
                 class="pt-4"
                 style="position: relative;">
 
+                <h2 class="font-weight-light black--text  mb-2" tabindex="0" role="tab">Tesla Taken in Space!</h2>
+                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0" role="tab">The car and rocket are products of Tesla
+                  and SpaceX, both companies founded by Elon Musk</h3>
+                <h3 class="font-weight-light  mb-2" tabindex="0" role="tab">
+                  The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production
+                  car in space.
+                </h3>
+
                 <v-btn
+                  to="blogs/-LTNL_uPHWxpF2LAJqqS"
                   absolute
-                  color="orange"
+                  color="secondary"
                   class="white--text"
                   fab
                   large
                   right
-                  top>
-                  <v-icon>mdi-cart</v-icon>
+                  top
+                  aria-label="Press enter to read full blog"
+                  aria-selected="false">
+                  <v-icon>notes</v-icon>
                 </v-btn>
-
-                <h2 class="font-weight-light secondary--text  mb-2">For the perfect meal</h2>
-                <h3 class="display-1 font-weight-light orange--text mb-2">QW cooking utensils</h3>
-                <h3 class="font-weight-light  mb-2">
-                  Our Vintage kitchen utensils delight any chef.<br>
-                  Made of bamboo by hand
-                </h3>
               </v-card-text>
             </v-card>
           </v-hover>
@@ -194,5 +209,14 @@
     opacity: .5;
     position: absolute;
     width: 100%;
+  }
+
+  .hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 </style>
