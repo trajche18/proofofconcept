@@ -1,7 +1,11 @@
 <template>
   <v-alert
-    error dismissible @input="onClose" :value="true"
-    type="error">
+    error
+    dismissible
+    @input="onClose"
+    :value="true"
+    type="error"
+    role="alert">
     {{text}}
   </v-alert>
 </template>

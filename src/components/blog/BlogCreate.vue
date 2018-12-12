@@ -40,6 +40,7 @@
                 label="Blog's content"
                 hint="Begin writing your blog"
                 aria-label=" start writing your blog"
+                aria-multiline="true"
                 aria-required="true">
               </v-textarea>
             </v-flex>
@@ -59,6 +60,7 @@
                 label="Blog's intro"
                 hint="Write an introduction for your blog"
                 aria-label=" write the introduction for your blog"
+                aria-multiline="true"
                 aria-required="true">
               </v-textarea>
             </v-flex>

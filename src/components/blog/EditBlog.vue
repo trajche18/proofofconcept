@@ -48,6 +48,7 @@
                 required
                 :rules="textfieldRules"
                 aria-label="Edit the intro of your blog. Current intro is:"
+                aria-multiline="true"
                 aria-required="true">
               </v-textarea>
 
@@ -60,6 +61,7 @@
                 required
                 :rules="textfieldRules"
                 aria-label="Edit the content of your blog. Current blog content is:"
+                aria-multiline="true"
                 aria-required="true">
               </v-textarea>
             </v-card-text>

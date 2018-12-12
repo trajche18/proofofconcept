@@ -26,16 +26,17 @@
             <v-layout row>
 
 
-                <v-flex xs5 sm4 md3>
-                  <a href="#" tabindex="0"><v-responsive>
-                    <!--Show the right image. Bind (with ':') the corresponding image, through the stored blog.imageURL-->
-                    <v-img
-                      :src="blog.imageURL"
-                      height="130px"
-                      :alt="blog.imageDescription"
-                    ></v-img>
-                  </v-responsive></a>
-                </v-flex>
+              <v-flex xs5 sm4 md3>
+                <v-responsive>
+                  <!--Show the right image. Bind (with ':') the corresponding image, through the stored blog.imageURL-->
+                  <v-img
+                    href="#" tabindex="0"
+                    :src="blog.imageURL"
+                    height="130px"
+                    :alt="blog.imageDescription">
+                  </v-img>
+                </v-responsive>
+              </v-flex>
 
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
