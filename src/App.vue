@@ -54,7 +54,6 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
         <v-btn role="menuitem"
-               aria-label="menu item"
                flat
                v-for="item in menuFunctions"
                :key="item.content"

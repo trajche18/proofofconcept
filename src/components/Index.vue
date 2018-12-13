@@ -67,15 +67,16 @@
     <v-container fluid>
       <v-layout wrap>
         <v-flex xs12>
+          <!--aria-current=true Represents the current item within a set.-->
           <v-combobox
-            role="tab"
             aria-haspopup="listbox"
             aria-label="Please select one of the following by using the arrow keys"
             aria-autocomplete="list"
             aria-expanded="false"
             v-model="select"
             :items="items"
-            label="Select a favorite activity or create a new one">
+            label="Select a favorite activity or create a new one"
+            role="combobox">
           </v-combobox>
         </v-flex>
       </v-layout>
@@ -105,7 +106,9 @@
                   watch it happen or be a part of it. Tab to read more!</h2>
 
                 <v-expand-transition>
+                  <!--Assistive technologies will present the entire changed region= "hover" as a whole, including the author-defined label if one exists.-->
                   <div
+                    aria-atomic="true"
                     aria-expanded="true"
                     v-if="hover"
                     class="d-flex transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
