@@ -79,12 +79,12 @@
                 </v-layout>
 
                 <v-checkbox
+                  role="checkbox"
+                  aria-checked="false"
                   v-model="checkbox"
                   :rules="[v => !!v || 'You must agree with the terms to continue!']"
                   label="I accept the Terms of Service"
                   aria-label="You must agree with the terms to continue."
-                  aria-checked="false"
-                  role="checkbox"
                   required>
                 </v-checkbox>
                 <!--aria-required="true" is not used, since I tested it with a colleague and it seems like this tag leads to misunderstanding-->

@@ -1,6 +1,6 @@
 <template>
   <v-dialog width="450px" persistent v-model="editDialog">
-    <!--This is the editBtn users see in /blog/:id -> the global component: 'app-edit-blog-dialog'-->
+    <!--This is the editBtn users see in /blog/:id -> the global component: 'app-edit-blog-dialog' initialized in main.js-->
     <v-btn
       accent
       slot="activator"

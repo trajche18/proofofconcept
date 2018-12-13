@@ -1,4 +1,3 @@
-
 <template>
   <v-alert
     error
@@ -6,7 +5,11 @@
     @input="onClose"
     :value="true"
     type="error"
-    role="alert">
+    role="alert"
+    aria-describedby="text"
+    aria-live="assertive"
+    aria-atomic="true"
+    aria-relevant="additions">
     {{text}}
   </v-alert>
 </template>

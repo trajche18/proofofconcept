@@ -5,7 +5,8 @@
       v-model="sideNav"
       fixed
       mobile-break-point
-      role="menu">
+      role="menu"
+      aria-orientation="vertical">
       <v-list dense>
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
         <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
@@ -14,7 +15,7 @@
           v-for="item in menuFunctions"
           :key="item.content"
           :to="item.link"
-          aria-haspopup="menu"
+          aria-haspopup="menuitem"
           aria-expanded="true"
           aria-hidden="true"
           role="menuitem"
@@ -41,7 +42,7 @@
 
     <!--This will be the 'dynamic' navBar incl. all the items -->
     <!--The burgerMenu will be shown only on small(smartphone) devices AND The items on the standard navBar will ne hidden on these small devices.-->
-    <v-toolbar class="primary" role="menubar"> <!--Colors could be managed in main.js -->
+    <v-toolbar class="primary" role="menu" aria-orientation="horizontal"> <!--Colors could be managed in main.js -->
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         class="hidden-sm-and-up">

@@ -69,14 +69,15 @@
         <v-flex xs12>
           <!--aria-current=true Represents the current item within a set.-->
           <v-combobox
-            aria-haspopup="listbox"
-            aria-label="Please select one of the following by using the arrow keys"
+            role="listbox"
             aria-autocomplete="list"
+            aria-haspopup="listbox"
             aria-expanded="false"
+            aria-selected="true"
+            aria-label="Please select one of the following by using the arrow keys"
             v-model="select"
             :items="items"
-            label="Select a favorite activity or create a new one"
-            role="combobox">
+            label="Select a favorite activity or create a new one">
           </v-combobox>
         </v-flex>
       </v-layout>
