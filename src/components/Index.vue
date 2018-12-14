@@ -98,6 +98,8 @@
                 aria-describedby="imgDescription"
                 tabindex="0"
                 :aspect-ratio="16/9"
+                aria-haspopup="true"
+                aria-live="polite"
                 src="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/09/29/104740719-GettyImages-855370048-elon-musk.530x298.jpg?v=1544455606">
                 <!--the css-class="hidden" is in this situation crucial, because the heading h2 actually has value and needs to be hidden from the human eye-->
                 <h2 id="imgDescription"
@@ -125,7 +127,8 @@
                 style="position: relative;">
 
                 <h2 class="font-weight-light black--text  mb-2" tabindex="0" role="tab">Tesla Taken in Space!</h2>
-                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0" role="tab">The car and rocket are products of Tesla
+                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0" role="tab">The car and rocket
+                  are products of Tesla
                   and SpaceX, both companies founded by Elon Musk</h3>
                 <h3 class="font-weight-light  mb-2" tabindex="0" role="tab">
                   The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production
