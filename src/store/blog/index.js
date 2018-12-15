@@ -141,9 +141,9 @@ export default {
         return blogA.date > blogB.date
       })
     },
-    // showing only 4 blogs
+    // showing only 5 blogs
     featuredBlogs (state, getters) {
-      return getters.loadedBlogs.slice(0, 3)
+      return getters.loadedBlogs.slice(0, 5)
     },
     // shows only the blog with the chosen blogID, which is used in /blogs after clicking on a block
     loadedBlog (state) {

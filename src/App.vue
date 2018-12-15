@@ -42,7 +42,7 @@
 
     <!--This will be the 'dynamic' navBar incl. all the items -->
     <!--The burgerMenu will be shown only on small(smartphone) devices AND The items on the standard navBar will ne hidden on these small devices.-->
-    <v-toolbar class="primary" role="menu" aria-orientation="horizontal"> <!--Colors could be managed in main.js -->
+    <v-toolbar class="toolbarColor" role="menu" aria-orientation="horizontal"> <!--Colors could be managed in main.js -->
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         class="hidden-sm-and-up">

@@ -183,7 +183,7 @@
     },
     computed: {
       blogs () {
-        // get data from featured (sliced 0 to 3) blogs
+        // get data from featured (sliced to blogs)
         return this.$store.getters.featuredBlogs
       },
       loading () {
