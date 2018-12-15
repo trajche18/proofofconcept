@@ -38,7 +38,7 @@
                       :rules="emailRules"
                       autofocus
                       required
-                      hint="Please enter your email"
+                      hint="Enter your email"
                       aria-required="true"
                       aria-label=" enter your email address">
                     </v-text-field>
@@ -70,11 +70,12 @@
                       id="confirmPassword"
                       v-model="confirmPassword"
                       type="password"
-                      :rules="[comparePasswords || 'Passwords must match']"
-                      hint="Passwords must match"
+                      :rules="[comparePasswords]"
+                      hint="Confirm password"
                       aria-required="true"
                       aria-label=" enter your password for confirmation. The password should be matching the first one.">
                     </v-text-field>
+                    <!--remove [] from :rules="comparepassword"-->
                   </v-flex>
                 </v-layout>
 
@@ -82,9 +83,9 @@
                   role="checkbox"
                   aria-checked="false"
                   v-model="checkbox"
-                  :rules="[v => !!v || 'You must agree with the terms to continue!']"
-                  label="I accept the Terms of Service"
-                  aria-label="You must agree with the terms to continue."
+                  :rules="[v => !!v || 'You must agree with the terms and conditions in order to continue.']"
+                  label="I agree to the Terms and Conditions"
+                  aria-label="You must agree with the terms and conditions in order to continue."
                   required>
                 </v-checkbox>
                 <!--aria-required="true" is not used, since I tested it with a colleague and it seems like this tag leads to misunderstanding-->
@@ -137,7 +138,7 @@
     },
     computed: {
       comparePasswords () {
-        return this.password !== this.confirmPassword ? 'Your password does not match' : ''
+        return this.password !== this.confirmPassword ? 'Your passwords does not match' : true
       },
       user () {
         // get stored value, from store/index.js and redirect user to '/'

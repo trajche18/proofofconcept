@@ -4,18 +4,20 @@
     <!--Button layout -->
     <v-layout row wrap class="mb-2">
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large
-               to="/blogs"
-               class="secondary"
-               aria-label="Press enter to View all blogs">View Blogs
+        <v-btn
+          large
+          to="/blogs"
+          class="secondary"
+          aria-label="Press enter to View all blogs">View Blogs
         </v-btn>
       </v-flex>
 
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large
-               to="/blog/new"
-               class="secondary"
-               aria-label="Press enter to create a new blog">Create a Blog
+        <v-btn
+          large
+          to="/blog/new"
+          class="secondary"
+          aria-label="Press enter to create a new blog">Create a Blog
         </v-btn>
       </v-flex>
     </v-layout>
@@ -38,7 +40,16 @@
     <!--Carousel(header) layout. Only show this component IF loadingAnimation IS NOT loading. So only when firebase has loaded the blog-data-->
     <v-layout row wrap class="mt-2" v-if="!loading">
       <v-flex xs12>
-        <v-carousel style="cursor: pointer" tabindex="0">
+        <!--hid the delimiters & controls from the carousel. Used aria-atomic to indicate that the carousel consists of more components (more blogs within the carousel)-->
+        <!--Used aria-live="assertive" to indicate that, when the state of the carousel changes, each change gets presented immediately to the end user, opposed to "polite" where we first wait for the label to be read and afterwards the content when users hover-over (since there is only one component: the hover message)-->
+        <v-carousel
+          style="cursor: pointer"
+          tabindex="0"
+          aria-atomic="true"
+          aria-live="assertive"
+          hide-delimiters
+          hide-controls
+          touch>
           <v-carousel-item
             v-for="blog in blogs"
             :key="blog.id"
@@ -116,7 +127,7 @@
                     v-if="hover"
                     class="d-flex transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
                     style="height: 100%;"
-                    aria-label="Tab to read full blog">
+                    aria-label="You just hovered over the component">
                     "I could either watch it happen or be a part of it." <br><br><br> -Elon Musk
                   </div>
                 </v-expand-transition>
@@ -125,15 +136,13 @@
               <v-card-text
                 class="pt-4"
                 style="position: relative;">
-
                 <h2 class="font-weight-light black--text  mb-2" tabindex="0" role="tab">Tesla Taken in Space!</h2>
                 <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0" role="tab">The car and rocket
                   are products of Tesla
                   and SpaceX, both companies founded by Elon Musk</h3>
                 <h3 class="font-weight-light  mb-2" tabindex="0" role="tab">
                   The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production
-                  car in space.
-                </h3>
+                  car in space.</h3>
 
                 <v-btn
                   to="blogs/-LTNL_uPHWxpF2LAJqqS"
@@ -203,7 +212,7 @@
 
   .intro {
     position: absolute;
-    bottom: 50px;
+    bottom: 0px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
