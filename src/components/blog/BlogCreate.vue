@@ -19,7 +19,7 @@
                 v-model="title"
                 required
                 :rules="textfieldRules"
-                label="Blog's title"
+                label="Blog title"
                 hint="Please enter the title of your blog"
                 aria-label=" enter the title of your blog."
                 aria-required="true">
@@ -37,7 +37,7 @@
                 v-model="content"
                 required
                 :rules="textfieldRules"
-                label="Blog's content"
+                label="Main blog content"
                 hint="Begin writing your blog"
                 aria-label=" start writing your blog"
                 aria-multiline="true"
@@ -57,7 +57,7 @@
                 v-model="intro"
                 required
                 :rules="textfieldRules"
-                label="Blog's intro"
+                label="Blog intro"
                 hint="Write an introduction for your blog"
                 aria-label=" write the introduction for your blog"
                 aria-multiline="true"
@@ -75,8 +75,8 @@
                 hint="Copy a valid img-URL from the internet"
                 required
                 :rules="textfieldRules"
-                label="Place your IMG-URL here"
-                aria-label="Copy the image URL in this text-field"
+                label="Paste your IMG-URL here"
+                aria-label="Insert the image URL in this text-field"
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -97,9 +97,9 @@
                 v-model="imageDescription"
                 required
                 :rules="textfieldRules"
-                label="Image's description"
+                label="Image description"
                 hint="Please describe the picture for the visually impaired"
-                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what is going on in the picture"
+                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what is visualized in this picture"
                 aria-required="true">
               </v-text-field>
             </v-flex>

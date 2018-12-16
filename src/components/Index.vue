@@ -96,7 +96,7 @@
 
     <!--the on-hover widget-->
     <v-container fluid>
-      <v-layout wrap>
+      <v-layout row wrap>
         <v-flex xs12>
           <v-hover close-delay="2000">
             <v-card
@@ -105,6 +105,7 @@
               color="grey lighten-4"
               max-width="600">
 
+              <!--aria-live='polite' indicate that there is more than 1 element (the hover-content in this situation). Polite means that the screenreader should 1st wait for the first element to be read (the label of the Elon-img), and afterwards read the second element (the content when the user hovers)-->
               <v-img
                 aria-describedby="imgDescription"
                 tabindex="0"
@@ -120,15 +121,15 @@
                   watch it happen or be a part of it. Tab to read more!</h2>
 
                 <v-expand-transition>
-                  <!--Assistive technologies will present the entire changed region= "hover" as a whole, including the author-defined label if one exists.-->
+                  <!--aria-atomic='true' -> Assistive technologies will present the entire changed region= "hover" as a whole, including the author-defined label if one exists.-->
                   <div
                     aria-atomic="true"
                     aria-expanded="true"
                     v-if="hover"
-                    class="d-flex transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
-                    style="height: 100%;"
+                    class="wrap xs12 sm10 md8 offset-sm1 offset-md2 transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
+                    style="height: 100%; width: 100%"
                     aria-label="You just hovered over the component">
-                    "I could either watch it happen or be a part of it." <br><br><br> -Elon Musk
+                    "I could either watch it happen or be a part of it." <br> -Elon Musk
                   </div>
                 </v-expand-transition>
               </v-img>
@@ -212,7 +213,7 @@
 
   .intro {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
