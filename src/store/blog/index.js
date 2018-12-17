@@ -11,7 +11,7 @@ export default {
         title: 'Winter is Coming',
         intro: 'Cold times are coming. Prepare yourself for the coldest winter',
         content: 'This is the whole text',
-        imageURL: 'http://www.successignited.com/wp-content/uploads/2015/01/Winter-of-Solitude-1-1024x682.jpg',
+        imageURL: 'https://cdn-images-1.medium.com/max/2000/1*JdxXGixaRXNZT3kaQnKsEg.jpeg',
         imageDescription: 'describing the image for visual impaired people'
       },
       {

@@ -46,10 +46,9 @@
           style="cursor: pointer"
           tabindex="0"
           aria-atomic="true"
-          aria-live="assertive"
+          aria-live="polite"
           hide-delimiters
-          hide-controls
-          touch>
+          hide-controls>
           <v-carousel-item
             v-for="blog in blogs"
             :key="blog.id"
@@ -80,11 +79,8 @@
         <v-flex xs12>
           <!--aria-current=true Represents the current item within a set.-->
           <v-combobox
-            role="listbox"
+            role="combobox"
             aria-autocomplete="list"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-            aria-selected="true"
             aria-label="Please select one of the following by using the arrow keys"
             v-model="select"
             :items="items"
@@ -129,7 +125,7 @@
                     class="wrap xs12 sm10 md8 offset-sm1 offset-md2 transition-fast-in-fast-out secondary darken-2 v-card--reveal display-1 white--text"
                     style="height: 100%; width: 100%"
                     aria-label="You just hovered over the component">
-                    "I could either watch it happen or be a part of it." <br> -Elon Musk
+                    "I could either watch it happen or be a part of it." <br><br> -Elon Musk
                   </div>
                 </v-expand-transition>
               </v-img>
@@ -137,11 +133,11 @@
               <v-card-text
                 class="pt-4"
                 style="position: relative;">
-                <h2 class="font-weight-light black--text  mb-2" tabindex="0" role="tab">Tesla Taken in Space!</h2>
-                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0" role="tab">The car and rocket
+                <h2 class="font-weight-light black--text  mb-2" tabindex="0">Tesla Taken in Space!</h2>
+                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0">The car and rocket
                   are products of Tesla
                   and SpaceX, both companies founded by Elon Musk</h3>
-                <h3 class="font-weight-light  mb-2" tabindex="0" role="tab">
+                <h3 class="font-weight-light  mb-2" tabindex="0">
                   The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production
                   car in space.</h3>
 
@@ -154,8 +150,7 @@
                   large
                   right
                   top
-                  aria-label="Press enter to read full blog"
-                  aria-selected="false">
+                  aria-label="Press enter to read full blog">
                   <v-icon>notes</v-icon>
                 </v-btn>
               </v-card-text>
