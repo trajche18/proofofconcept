@@ -9,7 +9,8 @@
     aria-describedby="text"
     aria-live="assertive"
     aria-atomic="true"
-    aria-relevant="additions">
+    aria-relevant="additions"
+    tabindex="0">
     {{text}}
   </v-alert>
 </template>
