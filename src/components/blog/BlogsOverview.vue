@@ -12,7 +12,9 @@
           indeterminate
           color="secondary"
           v-if="loading"
-          aria-label="Loading blogs"
+          aria-label="Loading blogs. Please wait."
+          aria-live="assertive"
+          aria-atomic="true"
           onfocus
         ></v-progress-circular>
       </v-flex>
@@ -24,7 +26,6 @@
         <v-card class="info">
           <v-container fluid>
             <v-layout row>
-
 
               <v-flex xs5 sm4 md3>
                 <v-responsive>
@@ -61,7 +62,7 @@
                     Read More
                   </v-btn>
 
-                  <v-btn flat aria-label="Share this blog with your friends!">
+                  <v-btn flat aria-label="Press enter to share this blog with your friends!">
                     <v-icon>arrow_forward</v-icon>
                     Share Blog
                   </v-btn>

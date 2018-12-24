@@ -64,7 +64,7 @@
               flat
               to="/blogs"
               type="submit"
-              aria-label="Go back to the blogs overview">
+              aria-label="Press enter to Go back to the blogs overview">
               Back
             </v-btn>
           </v-card-actions>

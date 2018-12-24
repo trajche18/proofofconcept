@@ -31,7 +31,9 @@
           indeterminate
           color="secondary"
           v-if="loading"
-          aria-label="Loading blogs"
+          aria-label="Loading blogs. Please wait."
+          aria-live="assertive"
+          aria-atomic="true"
           onfocus
         ></v-progress-circular>
       </v-flex>
@@ -81,7 +83,7 @@
           <v-combobox
             role="combobox"
             aria-autocomplete="list"
-            aria-label="Please select one of the following by using the arrow keys"
+            aria-label="Please select one of the following by using the arrow keys and pressing enter afterwards"
             v-model="select"
             :items="items"
             label="Select a favorite activity or create a new one">
@@ -90,7 +92,7 @@
       </v-layout>
     </v-container>
 
-    <!--the on-hover widget-->
+    <!--the tooltip widget-->
     <v-container fluid>
       <v-layout row wrap>
         <v-flex xs12>
@@ -109,11 +111,12 @@
                 aria-haspopup="true"
                 aria-live="polite"
                 src="https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/09/29/104740719-GettyImages-855370048-elon-musk.530x298.jpg?v=1544455606">
+
                 <!--the css-class="hidden" is in this situation crucial, because the heading h2 actually has value and needs to be hidden from the human eye-->
                 <h2 id="imgDescription"
                     class="hidden">
-                  A hover-component is shown. A picture of the futurist Elon Mask is visualized within the
-                  hover-component. The hover reveals one of his quotes: I could either
+                  A tooltip is shown. A picture of the futurist Elon Mask is visualized within the
+                  tooltip-component. On hover, one of his famous quotes is revealed: I could either
                   watch it happen or be a part of it. Tab to read more!</h2>
 
                 <v-expand-transition>
@@ -134,12 +137,9 @@
                 class="pt-4"
                 style="position: relative;">
                 <h2 class="font-weight-light black--text  mb-2" tabindex="0">Tesla Taken in Space!</h2>
-                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0">The car and rocket
-                  are products of Tesla
-                  and SpaceX, both companies founded by Elon Musk</h3>
+                <h3 class="display-1 font-weight-light secondary--text mb-2" tabindex="0">Elon Musk, the CEO of Tesla and SpaceX, and his team made this historical moment happen.</h3>
                 <h3 class="font-weight-light  mb-2" tabindex="0">
-                  The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production
-                  car in space.</h3>
+                  The 2008-model Roadster was previously used by Musk for commuting to work, and is the first production car in space.</h3>
 
                 <v-btn
                   to="blogs/-LTNL_uPHWxpF2LAJqqS"

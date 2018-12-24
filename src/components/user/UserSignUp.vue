@@ -40,7 +40,7 @@
                       required
                       hint="Enter your email"
                       aria-required="true"
-                      aria-label=" enter your email address">
+                      aria-label="The email text-field is selected. Enter your email address">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
@@ -57,7 +57,7 @@
                       required
                       hint="Password must be at least 6 characters"
                       aria-required="true"
-                      aria-label=" enter your password. Password must be at least 6 characters">
+                      aria-label="Enter your password. Password must be at least 6 characters">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
@@ -73,9 +73,8 @@
                       :rules="[comparePasswords]"
                       hint="Confirm password"
                       aria-required="true"
-                      aria-label=" enter your password for confirmation. The password should be matching the first one.">
+                      aria-label="Enter your password once again confirmation. The password should be matching the first one.">
                     </v-text-field>
-                    <!--remove [] from :rules="comparepassword"-->
                   </v-flex>
                 </v-layout>
 
@@ -85,7 +84,7 @@
                   v-model="checkbox"
                   :rules="[v => !!v || 'You must agree with the terms and conditions in order to continue.']"
                   label="I agree to the Terms and Conditions"
-                  aria-label="You must agree with the terms and conditions in order to continue."
+                  aria-label="You must agree with the terms and conditions in order to continue. Press space to agree."
                   required>
                 </v-checkbox>
                 <!--aria-required="true" is not used, since I tested it with a colleague and it seems like this tag leads to misunderstanding-->
@@ -99,7 +98,7 @@
                       :disabled="loading"
                       :loading="loading"
                       aria-pressed="false"
-                      aria-label="Press enter to sign up. You will be automatically logged in into your account.">
+                      aria-label="Press enter to sign up. You will be automatically logged into your account.">
                       Sign Up
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>

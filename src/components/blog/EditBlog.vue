@@ -74,7 +74,7 @@
              aria-label="Press tab to close the dialog and discard changes. Press tab again to save changes"></a>
           <v-spacer></v-spacer>
           <v-btn flat outline @click="editDialog = false"
-                 aria-label="Close this dialog. Changes won't be saved.">
+                 aria-label="Press enter to Close this dialog. Changes won't be saved.">
             Close
           </v-btn>
 
@@ -83,7 +83,7 @@
             :loading="loading"
             class="secondary"
             @click="saveEditedBlog"
-            aria-label="Press to save changes. You will be automatically redirected back to your blog.">
+            aria-label="Press enter to save changes. You will be automatically redirected back to your blog.">
             Save
           </v-btn>
         </v-card-actions>

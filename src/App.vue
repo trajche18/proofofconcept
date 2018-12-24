@@ -45,16 +45,17 @@
     <!--This will be the 'dynamic' navBar incl. all the items -->
     <!--The burgerMenu will be shown only on small(smartphone) devices AND The items on the standard navBar will ne hidden on these small devices.-->
     <v-toolbar class="toolbarColor" role="menu" aria-orientation="horizontal">
-      <!--Colors could be managed in src/main.js -->
+
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor: pointer" aria-label="Welcome to the blog app. Press tab to navigate through the menu">Blogs</router-link>
+      </v-toolbar-title>
+
+      <!--Colors can be managed in src/main.js -->
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         aria-hidden="true"
         class="hidden-sm-and-up">
       </v-toolbar-side-icon>
-
-      <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">Welcome To My Blogs</router-link>
-      </v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">

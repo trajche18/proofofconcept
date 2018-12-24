@@ -21,7 +21,7 @@
                 :rules="textfieldRules"
                 label="Blog title"
                 hint="Please enter the title of your blog"
-                aria-label=" enter the title of your blog."
+                aria-label="The Title Text-field is selected. Enter the title of your blog."
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -39,7 +39,7 @@
                 :rules="textfieldRules"
                 label="Main blog content"
                 hint="Begin writing your blog"
-                aria-label=" start writing your blog"
+                aria-label="Start writing your blog"
                 aria-multiline="true"
                 aria-required="true">
               </v-textarea>
@@ -59,7 +59,7 @@
                 :rules="textfieldRules"
                 label="Blog intro"
                 hint="Write an introduction for your blog"
-                aria-label=" write the introduction for your blog"
+                aria-label="Write the introduction for your blog"
                 aria-multiline="true"
                 aria-required="true">
               </v-textarea>
@@ -72,11 +72,11 @@
                 name="imageURL"
                 id="imgURL"
                 v-model="imageURL"
-                hint="Copy a valid img-URL from the internet"
+                hint="Copy an img-URL from the internet and paste it here"
                 required
                 :rules="textfieldRules"
-                label="Paste your IMG-URL here"
-                aria-label="Insert the image URL in this text-field"
+                label="Paste the IMG-URL"
+                aria-label="Paste the URL of the chosen image in this text-field"
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -99,7 +99,7 @@
                 :rules="textfieldRules"
                 label="Image description"
                 hint="Please describe the picture for the visually impaired"
-                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what is visualized in this picture"
+                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what the picture is about through your description. Press tab to publish blog."
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -112,7 +112,7 @@
                 class="secondary"
                 :disabled="!formCompleted"
                 type="submit"
-                aria-label="Press enter to save changes and publish your blog. Afterwards, You will be redirected to your new blog.">
+                aria-label="Press enter to save changes and publish your blog. You will be redirected to your new blog afterwards.">
                 Publish
               </v-btn>
             </v-flex>

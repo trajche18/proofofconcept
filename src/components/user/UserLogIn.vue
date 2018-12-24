@@ -39,7 +39,7 @@
                       autofocus
                       required
                       hint="Please enter your email"
-                      aria-label=" enter your email-address "
+                      aria-label="The email text-field is selected. Enter your email-address "
                       aria-required="true">
                     </v-text-field>
                   </v-flex>
@@ -57,7 +57,7 @@
                       required
                       hint="Password must be at least 6 characters"
                       aria-required="true"
-                      aria-label=" enter your password. Password must be at least 6 characters">
+                      aria-label="Enter your password. Password must be at least 6 characters">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
