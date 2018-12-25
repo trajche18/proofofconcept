@@ -3,6 +3,7 @@
     <h3 class="hidden" aria-label="Overview of the published blogs:"></h3>
 
 
+
     <!--Show loading animation while blogs from firebase are loaded & visualized-->
     <v-layout>
       <v-flex xs12 class="text-xs-center">
@@ -24,7 +25,7 @@
     <v-layout row wrap v-for="blog in blogs" :key="blog.id" class="mb-3">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
         <v-card class="info">
-          <v-container fluid>
+          <v-container fluid class="blogOverview">
             <v-layout row>
 
               <v-flex xs5 sm4 md3>
@@ -42,34 +43,37 @@
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
                   <div>
-                    <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty-->
-                    <h1 class="hidden" id="blogTitle" aria-label="Blog title:"></h1>
-                    <h2 class="white--text mb-0" tabindex="0" aria-describedby="blogTitle">{{blog.title}} </h2>
+                    <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty. Google's Lighthouse recognizes the IDs below separately (for each blog), which means that the ids are not unique-->
+                    <h3 class="hidden" id="titleOfBlog" aria-label="Blog title:"></h3>
+                    <h2 class="white--text mb-0" tabindex="0" aria-describedby="titleOfBlog">{{blog.title}} </h2>
 
-                    <h3 class="hidden" id="blogIntro" aria-label="Introduction of the blog:"></h3>
-                    <h4 tabindex="0" aria-describedby="blogIntro">{{blog.intro}}</h4>
+                    <h3 class="hidden" id="introOfBlog" aria-label="Introduction of the blog:"></h3>
+                    <h4 tabindex="0" aria-describedby="introOfBlog">{{blog.intro}}</h4>
 
-                    <h3 class="hidden" id="datePublished" aria-label="Date published"></h3>
+                    <h3 class="hidden" id="dateBlogPublished" aria-label="Date published"></h3>
                     <!-- pipeline date is for the better, locale supported, date-format -->
-                    <div tabindex="0" aria-describedby="datePublished">{{blog.date | date}}</div>
+                    <div tabindex="0" aria-describedby="dateBlogPublished">{{blog.date | date}}</div>
                   </div>
                 </v-card-title>
-
-                <v-card-actions>
-                  <!--Bind the 'read more' button to the corresponding blog, through the blogID-->
-                  <v-btn flat :to="'/blogs/' + blog.id" aria-label="Press enter to read full blog!">
-                    <v-icon>arrow_forward</v-icon>
-                    Read More
-                  </v-btn>
-
-                  <v-btn flat aria-label="Press enter to share this blog with your friends!">
-                    <v-icon>arrow_forward</v-icon>
-                    Share Blog
-                  </v-btn>
-                </v-card-actions>
               </v-flex>
-
             </v-layout>
+
+            <v-layout>
+              <v-spacer></v-spacer>
+              <v-card-actions>
+                <!--Bind the 'read more' button to the corresponding blog, through the blogID-->
+                <v-btn flat :to="'/blogs/' + blog.id" aria-label="Press enter to read full blog!">
+                  <v-icon>arrow_forward</v-icon>
+                  Read More
+                </v-btn>
+
+                <v-btn flat aria-label="Press enter to share this blog with your friends!">
+                  <v-icon>arrow_forward</v-icon>
+                  Share Blog
+                </v-btn>
+              </v-card-actions>
+            </v-layout>
+
           </v-container>
         </v-card>
       </v-flex>
@@ -79,6 +83,11 @@
 
 <script>
   export default {
+    data () {
+      return {
+        page: 1
+      }
+    },
     name: 'BlogOverview',
     computed: {
       blogs () {

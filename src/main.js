@@ -13,8 +13,9 @@ import EditBlog from './components/blog/EditBlog'
 Vue.use(Vuetify, {
   theme: {
     toolbarColor: colors.teal.lighten5,
+    blogOverview: colors.blue.darken1,
     primary: colors.teal.darken2,
-    secondary: colors.pink.darken1,
+    secondary: colors.pink.darken4,
     accent: colors.shades.black,
     error: colors.red.accent3,
     dateColor: colors.grey.darken3

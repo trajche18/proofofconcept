@@ -17,9 +17,9 @@
     <v-layout row wrap v-else>
       <v-flex xs12>
         <v-card>
-          <v-card-title primary-title="" role="doc-subtitle">
+          <v-card-title primary-title="">
             <h3 id="blogTitle" class="hidden" aria-label="The title of the blog:"></h3>
-            <h2 class="secondary--text" tabindex="0" aria-describedby="blogTitle" role="doc-subtitle">
+            <h2 class="secondary--text" tabindex="0" aria-describedby="blogTitle">
               {{blog.title}}</h2>
             <v-spacer></v-spacer>
             <!-- pipeline date is for the better, locale supported, date-format -->
@@ -34,7 +34,7 @@
               tabindex="0"
               :src="blog.imageURL"
               :alt="blog.imageDescription"
-              height="350px">
+              height="280px">
             </v-img>
             <!-- aria-describedby="p1" -->
             <!--<p hidden id="p1" aria-hidden="false"> This is the description that is used by aria-describedby</p>-->
