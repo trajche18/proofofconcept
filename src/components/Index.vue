@@ -4,7 +4,8 @@
       dark
       color="secondary"
       show-arrows
-      role="menu">
+      role="menu"
+      centered>
       <v-tabs-slider color="toolbarColor"></v-tabs-slider>
 
       <v-tab ripple tabindex="0" aria-label="Tap for the carousel" role="menuitem">
@@ -75,7 +76,7 @@
         <v-container fluid>
           <v-layout row wrap>
             <v-flex xs12>
-              <v-hover close-delay="2000">
+              <v-hover close-delay="1000">
                 <v-card
                   slot-scope="{ hover }"
                   class="mx-auto"

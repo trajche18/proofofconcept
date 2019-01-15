@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app><h1></h1>
     <v-navigation-drawer
       temporary=""
       v-model="sideNav"

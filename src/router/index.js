@@ -11,6 +11,11 @@ import AuthGuard from './authGuard'
 
 Vue.use(Router)
 
+/* router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+}) */
+
 export default new Router({
   // default vue-mode is /#/. I used the 'history' mode to get rid of the hashtag, which will give our URL a more natural look
   mode: 'history',
@@ -18,40 +23,61 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      component: Index
+      component: Index,
+      meta: {
+        title: 'The homepage of the application'
+      }
     },
     {
       path: '/blogs',
       name: 'BlogsOverview',
-      component: BlogsOverview
+      component: BlogsOverview,
+      meta: {
+        title: 'Blog overview'
+      }
     },
     {
       path: '/blog/new',
       name: 'BlogCreate',
       component: BlogCreate,
-      beforeEnter: AuthGuard
+      beforeEnter: AuthGuard,
+      meta: {
+        title: 'Create a blog'
+      }
     },
     {
       path: '/blogs/:id',
       name: 'BlogViewBlog',
       props: true,
-      component: BlogViewBlog
+      component: BlogViewBlog,
+      meta: {
+        title: 'View blog'
+      }
     },
     {
       path: '/profile',
       name: 'UserProfile',
       component: UserProfile,
-      beforeEnter: AuthGuard
+      beforeEnter: AuthGuard,
+      meta: {
+        title: 'Your profile'
+      }
     },
     {
       path: '/signup',
       name: 'UserSignUp',
-      component: UserSignUp
+      component: UserSignUp,
+      meta: {
+        title: 'Sign-up page'
+      }
     },
     {
       path: '/login',
       name: 'UserLogIn',
-      component: UserLogIn
+      component: UserLogIn,
+      meta: {
+        title: 'Log-in page'
+      }
     }
   ]
 })
