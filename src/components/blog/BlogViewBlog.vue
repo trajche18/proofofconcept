@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h3 class="hidden" aria-label="You are currently viewing the blog:" role="heading"/>
+    <h3 class="hidden" aria-label="Currently viewing the blog:" role="heading"/>
 
     <!-- loading-animation for each blog-->
     <v-layout row wrap v-if="loading">
@@ -18,7 +18,7 @@
       <v-flex xs12>
         <v-card>
           <v-card-title primary-title="">
-            <h3 id="blogTitle" class="hidden" aria-label="The title of the blog:"></h3>
+            <h3 id="blogTitle" class="hidden" aria-label="Blog's title:"></h3>
             <h2 class="secondary--text" tabindex="0" aria-describedby="blogTitle">
               {{blog.title}}</h2>
             <v-spacer></v-spacer>
@@ -42,7 +42,7 @@
 
           <!--optional. For visualizing the introduction that the user sees in the blog page (/blogs)-->
           <v-card-text class="primary--text">
-            <h3 id="blogIntro" class="hidden" aria-label="Introduction of the blog:"></h3>
+            <h3 id="blogIntro" class="hidden" aria-label="Blog's introduction:"></h3>
             <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty-->
             <div tabindex="0" aria-describedby="blogIntro"> {{blog.intro}}</div>
           </v-card-text>
@@ -50,7 +50,7 @@
           <v-card-text>
             <h3 class="hidden" aria-label="The blog:"></h3>
             <div tabindex="0" aria-describedby="blogEnd"> {{blog.content}}</div>
-            <h3 id="blogEnd" class="hidden" aria-label="This is the end of the blog."></h3>
+            <h3 id="blogEnd" class="hidden" aria-label="This is the end of this blog."></h3>
           </v-card-text>
 
           <v-card-actions>
@@ -64,7 +64,7 @@
               flat
               to="/blogs"
               type="submit"
-              aria-label="Press enter to Go back to the blogs overview">
+              aria-label="Go back to all blogs">
               Back
             </v-btn>
           </v-card-actions>

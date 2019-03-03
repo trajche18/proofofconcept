@@ -40,7 +40,7 @@
                       required
                       hint="Enter your email"
                       aria-required="true"
-                      aria-label="The email text-field is selected. Enter your email address">
+                      aria-label="The email text field is automatically selected. Enter your email address">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
@@ -73,7 +73,7 @@
                       :rules="[comparePasswords]"
                       hint="Confirm password"
                       aria-required="true"
-                      aria-label="Enter your password once again confirmation. The password should be matching the first one.">
+                      aria-label="Confirm your password.">
                     </v-text-field>
                   </v-flex>
                 </v-layout>
@@ -98,7 +98,7 @@
                       :disabled="loading"
                       :loading="loading"
                       aria-pressed="false"
-                      aria-label="Press enter to sign up. You will be automatically logged into your account.">
+                      aria-label="Sign up. You will be automatically logged in into your account.">
                       Sign Up
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>

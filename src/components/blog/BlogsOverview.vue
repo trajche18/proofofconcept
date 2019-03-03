@@ -44,10 +44,10 @@
                 <v-card-title primary-title>
                   <div>
                     <!--the css-class="hidden" is not mandatory in these situations, since the heading is empty. Google's Lighthouse recognizes the IDs below separately (for each blog), which means that the ids are not unique-->
-                    <h3 class="hidden" id="titleOfBlog" aria-label="Blog title:"></h3>
+                    <h3 class="hidden" id="titleOfBlog" aria-label="Blog's title:"></h3>
                     <h2 class="white--text mb-0" tabindex="0" aria-describedby="titleOfBlog">{{blog.title}} </h2>
 
-                    <h3 class="hidden" id="introOfBlog" aria-label="Introduction of the blog:"></h3>
+                    <h3 class="hidden" id="introOfBlog" aria-label="Blog's introduction:"></h3>
                     <h4 tabindex="0" aria-describedby="introOfBlog">{{blog.intro}}</h4>
 
                     <h3 class="hidden" id="dateBlogPublished" aria-label="Date published"></h3>
@@ -62,12 +62,12 @@
               <v-spacer></v-spacer>
               <v-card-actions>
                 <!--Bind the 'read more' button to the corresponding blog, through the blogID-->
-                <v-btn flat :to="'/blogs/' + blog.id" aria-label="Press enter to read full blog!">
+                <v-btn flat :to="'/blogs/' + blog.id" aria-label="Visit to read full blog!">
                   <v-icon>arrow_forward</v-icon>
                   Read More
                 </v-btn>
 
-                <v-btn flat aria-label="Press enter to share this blog with your friends!">
+                <v-btn flat aria-label="Share blog with friends!">
                   <v-icon>arrow_forward</v-icon>
                   Share Blog
                 </v-btn>

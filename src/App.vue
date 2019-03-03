@@ -8,7 +8,7 @@
       role="menu"
       aria-label="menu"
       aria-orientation="vertical"
-      tabindex="-1">
+      tabindex="0">
       <v-list dense>
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
         <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
@@ -17,8 +17,8 @@
           v-for="item in menuFunctions"
           :key="item.content"
           :to="item.link"
-          aria-haspopup="menuitem"
-          aria-expanded="true"
+          aria-haspopup="true"
+          aria-expanded="false"
           aria-hidden="true"
           role="menuitem"
           tabindex="-1">
@@ -47,7 +47,7 @@
     <v-toolbar class="toolbarColor" role="menu" aria-orientation="horizontal">
 
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer" aria-label="Welcome to the blog app. Press tab to navigate through the menu">Blogs</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer" aria-label="Welcome to the blog app. Press tab to navigate through the menu">Accessibility</router-link>
       </v-toolbar-title>
 
       <!--Colors can be managed in src/main.js -->

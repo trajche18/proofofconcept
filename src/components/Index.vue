@@ -8,15 +8,15 @@
       centered>
       <v-tabs-slider color="toolbarColor"></v-tabs-slider>
 
-      <v-tab ripple tabindex="0" aria-label="Tap for the carousel" role="menuitem">
+      <v-tab ripple tabindex="0" aria-label="The carousel" role="menuitem">
         Carousel
       </v-tab>
 
-      <v-tab ripple tabindex="0" aria-label="tap for the combo-box" role="menuitem">
+      <v-tab ripple tabindex="0" aria-label="The combo-box" role="menuitem">
         Combobox
       </v-tab>
 
-      <v-tab ripple tabindex="0" aria-label="Tap for the hover-component" role="menuitem">
+      <v-tab ripple tabindex="0" aria-label="The hover-component" role="menuitem">
         Hover
       </v-tab>
 
@@ -26,11 +26,11 @@
           <v-flex xs12>
             <!--hid the delimiters & controls from the carousel. Used aria-atomic to indicate that the carousel consists of more components (more blogs within the carousel)-->
             <!--Used aria-live="assertive" to indicate that, when the state of the carousel changes, each change gets presented immediately to the end user, opposed to "polite" where we first wait for the label to be read and afterwards the content when users hover-over (since there is only one component: the hover message)-->
+            <!-- Removed aria-live="assertive" since it could be annoying to keep announcing the carousel-items without user focusing on the carousel in the first place-->
             <v-carousel
               style="cursor: pointer"
               tabindex="0"
               aria-atomic="true"
-              aria-live="assertive"
               hide-delimiters
               hide-controls>
               <v-carousel-item
@@ -61,7 +61,7 @@
                 autofocus
                 role="combobox"
                 aria-autocomplete="list"
-                aria-label="Please select one of the following by using the arrow keys and pressing enter afterwards"
+                aria-label="Select one of the items by using the arrow keys and pressing enter afterwards"
                 v-model="select"
                 :items="items"
                 label="Select a favorite activity or create a new one">
@@ -132,7 +132,7 @@
                       large
                       right
                       top
-                      aria-label="Press enter to read full blog">
+                      aria-label="Read full blog">
                       <v-icon>notes</v-icon>
                     </v-btn>
                   </v-card-text>
@@ -151,7 +151,7 @@
           large
           to="/blogs"
           class="secondary"
-          aria-label="Press enter to View all blogs"> View Blogs
+          aria-label="View all blogs"> View Blogs
         </v-btn>
       </v-flex>
 
@@ -160,7 +160,7 @@
           large
           to="/blog/new"
           class="secondary"
-          aria-label="Press enter to create a new blog">Create Blog
+          aria-label="Create a new blog">Create Blog
         </v-btn>
       </v-flex>
     </v-layout>

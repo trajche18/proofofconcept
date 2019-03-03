@@ -21,7 +21,7 @@
                 :rules="textfieldRules"
                 label="Blog title"
                 hint="Please enter the title of your blog"
-                aria-label="The Title Text-field is selected. Enter the title of your blog."
+                aria-label="The Title text field is automatically selected. Enter the title of your blog."
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -39,7 +39,7 @@
                 :rules="textfieldRules"
                 label="Main blog content"
                 hint="Begin writing your blog"
-                aria-label="Start writing your blog"
+                aria-label="Start composing your blog"
                 aria-multiline="true"
                 aria-required="true">
               </v-textarea>
@@ -76,7 +76,7 @@
                 required
                 :rules="textfieldRules"
                 label="Paste the IMG-URL"
-                aria-label="Paste the URL of the chosen image in this text-field"
+                aria-label="Enter the URL of your image here."
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -84,7 +84,7 @@
 
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3 class="mt-1"
-                    aria-label="Here is a preview of your chosen picture">
+                    aria-label="This is a preview of the image">
               <img :src="imageURL" height="180">
             </v-flex>
           </v-layout>
@@ -99,7 +99,7 @@
                 :rules="textfieldRules"
                 label="Image description"
                 hint="Please describe the picture for the visually impaired"
-                aria-label="Please describe the picture you have chosen. This will help the visually impaired users feel what the picture is about through your description. Press tab to publish blog."
+                aria-label="Provide a description for the image. This entry will be announced by screen readers afterward. When done, press tab to publish blog."
                 aria-required="true">
               </v-text-field>
             </v-flex>
@@ -112,7 +112,7 @@
                 class="secondary"
                 :disabled="!formCompleted"
                 type="submit"
-                aria-label="Press enter to save changes and publish your blog. You will be redirected to your new blog afterwards.">
+                aria-label="Save changes and publish ypur blog. You will be redirected to your new blog afterward.">
                 Publish
               </v-btn>
             </v-flex>

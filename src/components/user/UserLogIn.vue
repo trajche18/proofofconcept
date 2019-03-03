@@ -39,7 +39,7 @@
                       autofocus
                       required
                       hint="Please enter your email"
-                      aria-label="The email text-field is selected. Enter your email-address "
+                      aria-label="The email text field is automatically selected. Enter your email-address"
                       aria-required="true">
                     </v-text-field>
                   </v-flex>
@@ -70,7 +70,7 @@
                       class="secondary"
                       :disabled="loading"
                       :loading="loading"
-                      aria-label="Press enter to log in. You will be redirected to the home page.">
+                      aria-label="Log in. You will be redirected to the home page.">
                       Log In
                       <span slot="leader" class="custom-loader">
                         <v-icon light>cached</v-icon>

@@ -7,7 +7,7 @@
       class="secondary mb-1"
       aria-haspopup="dialog"
       aria-expanded="true"
-      aria-label="Press enter to edit this blog.">
+      aria-label="Edit this blog.">
       <v-icon>edit</v-icon>
     </v-btn>
 
@@ -17,7 +17,7 @@
           <v-flex xs12>
             <v-card-title>
               <!--pay attention to the title, make it focusable-->
-              <h3 class="secondary--text" aria-label="Edit Blog Dialog Opened." role="heading"> Edit Blog </h3>
+              <h3 class="secondary--text" aria-label="Edit-Blog Dialog expanded." role="heading"> Edit Blog </h3>
             </v-card-title>
           </v-flex>
         </v-layout>
@@ -34,7 +34,7 @@
                 v-model="editedTitle"
                 required
                 :rules="textfieldRules"
-                aria-label="Edit the title of your blog. Current title is:"
+                aria-label="Edit blog's title. Current title is:"
                 aria-required="true">
               </v-text-field>
 
@@ -47,7 +47,7 @@
                 v-model="editedIntro"
                 required
                 :rules="textfieldRules"
-                aria-label="Edit the intro of your blog. Current intro is:"
+                aria-label="Edit blog's intro. Current intro is:"
                 aria-multiline="true"
                 aria-required="true">
               </v-textarea>
@@ -57,10 +57,11 @@
                 id="content"
                 height="250"
                 box
+                role="textbox"
                 v-model="editedContent"
                 required
                 :rules="textfieldRules"
-                aria-label="Edit the content of your blog. Current blog content is:"
+                aria-label="Edit blog's content. Current blog is:"
                 aria-multiline="true"
                 aria-required="true">
               </v-textarea>
@@ -74,7 +75,7 @@
              aria-label="Press tab to close the dialog and discard changes. Press tab again to save changes"></a>
           <v-spacer></v-spacer>
           <v-btn flat outline @click="editDialog = false"
-                 aria-label="Press enter to Close this dialog. Changes won't be saved.">
+                 aria-label="Close this dialog. Changes won't be saved.">
             Close
           </v-btn>
 
@@ -83,7 +84,7 @@
             :loading="loading"
             class="secondary"
             @click="saveEditedBlog"
-            aria-label="Press enter to save changes. You will be automatically redirected back to your blog.">
+            aria-label="Save changes. You will be automatically redirected back to your blog.">
             Save
           </v-btn>
         </v-card-actions>
