@@ -1,4 +1,4 @@
-## CRUD Blog application using Vue and applying ARIA-tags for accessibility
+## A cross-platform CRUD application using Vue and applying ARIA-attributes to elements in order to make them semantic and simultaniously improve the accessibility of the application.
 
 > Developed as a PoC deliverable for my Graduation Internship @ Accenture
 
@@ -13,12 +13,13 @@
 `npm run dev`
 
 ### Or visit the hosted version of the application
-`Paste this URL into your browser: "3.120.138.5:8080" to visit the application`
+- `Paste the following URL into your browser "3.120.138.5:8080" to visit the application`
+- `Or simply visit https://trajche18.github.io/ from your browser on your desktop or any handheld device`
 
-### in order to link another firebase db, navigate to src/main.js and paste your tokens inthere
+### in order to link another firebase db, navigate to src/main.js and paste your unique FireBase-tokens in there
 ```vuejs
 firebase.initializeApp({
-      apiKey: 'AIzaSyDBeKw1ZAFNFWCyFJ3uIKt13D45oS3OYmI',
+      apiKey: '...',
       authDomain: 'accessibilitypoc-2bbce.firebaseapp.com',
       databaseURL: 'https://accessibilitypoc-2bbce.firebaseio.com',
       projectId: 'accessibilitypoc-2bbce',
