@@ -112,7 +112,7 @@
                 class="secondary"
                 :disabled="!formCompleted"
                 type="submit"
-                aria-label="Save changes and publish ypur blog. You will be redirected to your new blog afterward.">
+                aria-label="Save changes and publish your blog. You will be redirected to your new blog afterward.">
                 Publish
               </v-btn>
             </v-flex>
