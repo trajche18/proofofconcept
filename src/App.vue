@@ -1,5 +1,5 @@
 <template>
-  <v-app><h1></h1>
+  <v-app :dark="toggleDarkTheme"><h1></h1>
     <v-navigation-drawer
       temporary=""
       v-model="sideNav"
@@ -38,6 +38,9 @@
           </v-list-tile-action>
           <v-list-tile-content>Log Out</v-list-tile-content>
         </v-list-tile>
+
+        <v-spacer></v-spacer>
+        <v-switch dense :label="`Dark Theme`" v-model="toggleDarkTheme"></v-switch>
 
       </v-list>
     </v-navigation-drawer>

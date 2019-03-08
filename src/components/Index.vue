@@ -217,7 +217,7 @@
       }
     },
     methods: {
-      // navigate when user clicks the image on the header to the corresponding blogID
+      // navigate when user clicks the image on the slider to the corresponding blogID
       onLoadBlog (id) {
         this.$router.push('/blogs/' + id)
       }

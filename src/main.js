@@ -32,6 +32,11 @@ Vue.component('app-edit-blog-dialog', EditBlog)
 new Vue({
   store,
   el: '#app',
+  data () {
+    return {
+      toggleDarkTheme: false
+    }
+  },
   router,
   render: h => h(App),
   created () {
