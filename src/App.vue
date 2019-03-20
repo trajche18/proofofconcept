@@ -5,8 +5,7 @@
       v-model="sideNav"
       fixed
       mobile-break-point
-      role="menu"
-      aria-label=""
+      role="menuitem"
       aria-orientation="vertical"
     >
 
@@ -18,7 +17,6 @@
           v-for="item in menuFunctions"
           :key="item.content"
           :to="item.link"
-          aria-expanded="true"
           role="menuitem"
         >
           <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
@@ -59,7 +57,7 @@
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         tabindex="0"
-        aria-label="Tap to see the menuitems"
+        aria-label="Tap to expand the menu items"
         class="hidden-sm-and-up">
       </v-toolbar-side-icon>
 
