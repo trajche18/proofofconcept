@@ -20,7 +20,6 @@
           :to="item.link"
           aria-haspopup="true"
           aria-expanded="false"
-          aria-hidden="true"
           role="menuitem"
           tabindex="0">
           <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
