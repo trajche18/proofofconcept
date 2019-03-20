@@ -7,8 +7,8 @@
       mobile-break-point
       role="menu"
       aria-label="menu"
-      aria-orientation="vertical"
-      tabindex="0">
+      aria-orientation="vertical">
+
       <v-list dense>
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
         <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->

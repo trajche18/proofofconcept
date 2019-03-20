@@ -1,4 +1,6 @@
-FROM node:lts-alpine
+#FROM node:lts-alpine
+FROM alpine:3.9
+RUN apk update && apk add --no-cache nodejs-npm
 
 # install simple http server for serving static content
 RUN npm install -g http-server
@@ -19,10 +21,11 @@ COPY . .
 RUN npm run build
 
 # production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
 
+#FROM nginx:stable-alpine as production-stage
+#COPY --from=build-stage /app/dist /usr/share/nginx/html
 #EXPOSE 8080
-#CMD [ "http-server", "dist" ]
+#CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
