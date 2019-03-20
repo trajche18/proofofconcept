@@ -58,7 +58,7 @@
       <!--Burgermenu icon -->
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
-        aria-hidden="false"
+        tabindex="0"
         class="hidden-sm-and-up">
       </v-toolbar-side-icon>
 
