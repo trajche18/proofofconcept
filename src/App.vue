@@ -8,10 +8,11 @@
       role="menu"
       aria-label="menu"
       aria-orientation="vertical"
-      tabindex="0">
+      aria-hidden="true"
+      tabindex="-1">
 
       <v-list dense>
-        <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
+        <!--These are the items in the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
         <!--Set hidden for the screen reader, since there are 2 nav-bars (burger menu(this one) and the actual nav-bar. -->
         <v-list-tile
           @click=""
@@ -21,7 +22,7 @@
           aria-haspopup="true"
           aria-expanded="false"
           role="menuitem"
-          tabindex="0">
+          tabindex="-1">
           <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
           that is why i combined it with tabindex="-1", to make it untabbable-->
 
@@ -40,7 +41,7 @@
         </v-list-tile>
 
         <v-spacer></v-spacer>
-        <v-switch dense :label="`Dark Theme`" v-model="toggleDarkTheme"></v-switch>
+        <v-switch tabindex="-1" dense :label="`Dark Theme`" v-model="toggleDarkTheme"></v-switch>
 
       </v-list>
     </v-navigation-drawer>
@@ -54,9 +55,10 @@
       </v-toolbar-title>
 
       <!--Colors can be managed in src/main.js -->
+      <!--Burgermenu icon -->
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
-        aria-hidden="true"
+        aria-hidden="false"
         class="hidden-sm-and-up">
       </v-toolbar-side-icon>
 
