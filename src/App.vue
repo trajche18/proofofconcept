@@ -7,7 +7,8 @@
       mobile-break-point
       role="menu"
       aria-label="menu"
-      aria-orientation="vertical">
+      aria-orientation="vertical"
+      tabindex="0">
 
       <v-list dense>
         <!--This is the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
@@ -21,7 +22,7 @@
           aria-expanded="false"
           aria-hidden="true"
           role="menuitem"
-          tabindex="-1">
+          tabindex="0">
           <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
           that is why i combined it with tabindex="-1", to make it untabbable-->
 
