@@ -6,10 +6,9 @@
       fixed
       mobile-break-point
       role="menu"
-      aria-label="menu"
+      aria-label=""
       aria-orientation="vertical"
-      aria-hidden="true"
-      tabindex="-1">
+    >
 
       <v-list dense>
         <!--These are the items in the burger-menu. It is triggered to be shown if the app is resized to mobile resolution -->
@@ -19,10 +18,9 @@
           v-for="item in menuFunctions"
           :key="item.content"
           :to="item.link"
-          aria-haspopup="true"
-          aria-expanded="false"
+          aria-expanded="true"
           role="menuitem"
-          tabindex="-1">
+        >
           <!--role="menuitem" -> If this tag is used, then the TAB-navigation gets interrupted when tabbing out the last btn-component off the card,
           that is why i combined it with tabindex="-1", to make it untabbable-->
 
@@ -33,7 +31,7 @@
           <v-list-tile-content>{{item.content}}</v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="userAuthenticated" @click="onSignOut" aria-hidden="true" role="menuitem">
+        <v-list-tile v-if="userAuthenticated" @click="onSignOut" aria-hidden="false" role="menuitem">
           <v-list-tile-action>
             <v-icon>exit_to_app</v-icon>
           </v-list-tile-action>
@@ -51,7 +49,9 @@
     <v-toolbar class="toolbarColor" role="menu" aria-orientation="horizontal">
 
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer" aria-label="Welcome to the blog app. Press tab to navigate through the menu">Accessibility</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer"
+                     aria-label="Welcome to the blog app. Press tab to navigate through the menu">Accessibility
+        </router-link>
       </v-toolbar-title>
 
       <!--Colors can be managed in src/main.js -->
@@ -59,6 +59,7 @@
       <v-toolbar-side-icon
         @click.stop="sideNav = !sideNav"
         tabindex="0"
+        aria-label="Tap to see the menuitems"
         class="hidden-sm-and-up">
       </v-toolbar-side-icon>
 
