@@ -72,7 +72,7 @@
           {{item.content}}
         </v-btn>
 
-        <v-btn flat v-if="userAuthenticated" @click="onSignOut" role="menuitem" aria-label="Log Out">
+        <v-btn flat v-if="userAuthenticated" @click="onSignOut" role="menuitem" aria-label="Log Out" aria-hidden="false">
           <v-icon left>exit_to_app</v-icon>
           Log Out
         </v-btn>
