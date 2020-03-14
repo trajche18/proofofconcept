@@ -185,7 +185,7 @@
     <!--Paragraph layout -->
     <v-layout row wrap class="mt-4">
       <v-flex xs12 class="text-xs-center">
-        <p>The blogs</p>
+        <p>© 2019 Trajche Atanasov. All Rights Reserved.</p>
       </v-flex>
     </v-layout>
 
